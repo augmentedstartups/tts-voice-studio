@@ -1,0 +1,150 @@
+# TTS Voice Studio - Monorepo .gitignore
+
+# ============================================================================
+# Python
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# ============================================================================
+# Node.js / Frontend
+# ============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.DS_Store
+*.local
+
+# Frontend Build
+frontend/dist/
+frontend/.vite/
+frontend/coverage/
+
+# ============================================================================
+# Generated Audio Files
+# ============================================================================
+backend/temp/
+backend/temp/**/*
+*.wav
+!models/neutts-air/samples/*.wav
+!models/higgs-audio/voice_prompts/*.wav
+
+# ============================================================================
+# Downloaded Model Weights & Caches
+# ============================================================================
+# Hugging Face cache
+.cache/
+**/cache/
+**/.cache/
+
+# Model weights (will be downloaded on first use)
+**/models--*/
+**/snapshots/
+**/*.bin
+**/*.safetensors
+**/*.onnx
+**/*.gguf
+
+# Higgs Audio venv and downloads
+higgs_venv/
+higgs-audio/higgs_venv/
+
+# ============================================================================
+# IDE & Editor
+# ============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ============================================================================
+# OS Files
+# ============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ============================================================================
+# Logs
+# ============================================================================
+*.log
+logs/
+*.log.*
+/tmp/
+
+# ============================================================================
+# Environment Variables
+# ============================================================================
+.env
+.env.local
+.env.*.local
+
+# ============================================================================
+# Testing
+# ============================================================================
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# ============================================================================
+# Documentation builds
+# ============================================================================
+docs/_build/
+site/
+
+# ============================================================================
+# Temporary files
+# ============================================================================
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# ============================================================================
+# Package locks (keep these for reproducibility)
+# ============================================================================
+# Uncomment if you want to exclude lock files:
+# package-lock.json
+# yarn.lock
+# poetry.lock
+
+# ============================================================================
+# Generated config files
+# ============================================================================
+backend/config/.generated
+
+# ============================================================================
+# Keep essential sample files
+# ============================================================================
+# Sample audio files for voice cloning are kept:
+# - models/neutts-air/samples/*.wav
+# - models/neutts-air/samples/*.txt
+# - models/neutts-air/samples/*.pt
+# - models/higgs-audio/voice_prompts/*.wav
+# - models/higgs-audio/voice_prompts/*.txt
+

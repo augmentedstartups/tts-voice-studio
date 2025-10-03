@@ -1,0 +1,212 @@
+{
+  "models": {
+    "higgs-audio-v2": {
+      "id": "higgs-audio-v2",
+      "name": "Higgs Audio V2",
+      "description": "State-of-art expressive audio generation (5.77B params)",
+      "provider": "Boson AI",
+      "status": "active",
+      "maxCharacters": 4096,
+      "parameters": "5.77B",
+      "license": "Apache 2.0",
+      "settings": {
+        "temperature": {
+          "min": 0.7,
+          "max": 2.0,
+          "default": 0.7,
+          "step": 0.1,
+          "description": "Controls randomness in generation"
+        },
+        "top_k": {
+          "min": 10,
+          "max": 100,
+          "default": 50,
+          "step": 10,
+          "description": "Top-k sampling"
+        },
+        "top_p": {
+          "min": 0.5,
+          "max": 1.0,
+          "default": 0.95,
+          "step": 0.05,
+          "description": "Nucleus sampling"
+        },
+        "chunk_method": {
+          "options": ["none", "word", "speaker"],
+          "default": "word",
+          "description": "Chunking strategy for long text"
+        },
+        "chunk_max_word_num": {
+          "min": 50,
+          "max": 200,
+          "default": 100,
+          "step": 10,
+          "description": "Words per chunk"
+        }
+      },
+      "voices": [
+        {
+          "id": "belinda",
+          "name": "Belinda",
+          "description": "Warm and expressive female voice",
+          "gender": "female",
+          "language": "en-US"
+        },
+        {
+          "id": "chadwick",
+          "name": "Chadwick",
+          "description": "Professional male voice",
+          "gender": "male",
+          "language": "en-US"
+        },
+        {
+          "id": "en_man",
+          "name": "English Man",
+          "description": "Clear male voice",
+          "gender": "male",
+          "language": "en-US"
+        },
+        {
+          "id": "en_woman",
+          "name": "English Woman",
+          "description": "Clear female voice",
+          "gender": "female",
+          "language": "en-US"
+        },
+        {
+          "id": "mabel",
+          "name": "Mabel",
+          "description": "Bright and energetic female voice",
+          "gender": "female",
+          "language": "en-US"
+        },
+        {
+          "id": "vex",
+          "name": "Vex",
+          "description": "Strong and confident voice",
+          "gender": "neutral",
+          "language": "en-US"
+        },
+        {
+          "id": "auto",
+          "name": "Smart Voice",
+          "description": "AI selects appropriate voice based on text",
+          "gender": "auto",
+          "language": "auto"
+        }
+      ]
+    },
+    "neutts-air": {
+      "id": "neutts-air",
+      "name": "NeuTTS Air",
+      "description": "Fast and efficient neural TTS",
+      "provider": "Neuphonic",
+      "status": "active",
+      "maxCharacters": 2048,
+      "parameters": "Not specified",
+      "license": "Apache 2.0",
+      "settings": {
+        "temperature": {
+          "min": 0.5,
+          "max": 1.5,
+          "default": 1.0,
+          "step": 0.1,
+          "description": "Controls randomness in generation"
+        },
+        "top_k": {
+          "min": 10,
+          "max": 100,
+          "default": 50,
+          "step": 10,
+          "description": "Top-k sampling"
+        }
+      },
+      "voices": [
+        {
+          "id": "dave",
+          "name": "Dave",
+          "description": "Male voice with clear articulation",
+          "gender": "male",
+          "language": "en-US"
+        },
+        {
+          "id": "jo",
+          "name": "Jo",
+          "description": "Female voice with warm tone",
+          "gender": "female",
+          "language": "en-US"
+        },
+        {
+          "id": "ritesh",
+          "name": "Ritesh",
+          "description": "Custom trained voice",
+          "gender": "male",
+          "language": "en-US"
+        }
+      ]
+    },
+    "kokoro-v1": {
+      "id": "kokoro-v1",
+      "name": "Kokoro v1.0",
+      "description": "Lightweight and fast TTS (82M params)",
+      "provider": "Hexgrad",
+      "status": "planned",
+      "maxCharacters": 2048,
+      "parameters": "82M",
+      "license": "Apache 2.0",
+      "settings": {},
+      "voices": []
+    },
+    "dia": {
+      "id": "dia",
+      "name": "Dia",
+      "description": "Advanced conversational TTS (1.6B params)",
+      "provider": "Nari Labs",
+      "status": "planned",
+      "maxCharacters": 4096,
+      "parameters": "1.6B",
+      "license": "Apache 2.0",
+      "deployment": "Modal",
+      "settings": {},
+      "voices": []
+    },
+    "chatterbox": {
+      "id": "chatterbox",
+      "name": "Chatterbox",
+      "description": "Real-time voice synthesis",
+      "provider": "Resemble AI",
+      "status": "planned",
+      "maxCharacters": 2048,
+      "parameters": "Not specified",
+      "license": "MIT",
+      "deployment": "Modal",
+      "settings": {},
+      "voices": []
+    },
+    "orpheus": {
+      "id": "orpheus",
+      "name": "Orpheus",
+      "description": "Multi-size expressive TTS (3B/1B/400M/150M)",
+      "provider": "Canopy Labs",
+      "status": "planned",
+      "maxCharacters": 4096,
+      "parameters": "3B/1B/400M/150M",
+      "license": "Apache 2.0",
+      "settings": {},
+      "voices": []
+    },
+    "sesame-csm": {
+      "id": "sesame-csm",
+      "name": "Sesame CSM",
+      "description": "Conversational speech model (1B params)",
+      "provider": "Sesame",
+      "status": "planned",
+      "maxCharacters": 2048,
+      "parameters": "1B",
+      "license": "Apache 2.0",
+      "settings": {},
+      "voices": []
+    }
+  }
+}
+
