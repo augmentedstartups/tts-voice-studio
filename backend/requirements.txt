@@ -13,5 +13,5 @@ soundfile
 librosa
 transformers
 accelerate
-perth
+git+https://github.com/facebookresearch/audioseal.git
 git+https://github.com/Neuphonic/NeuCodec.git

@@ -26,12 +26,24 @@ class NeuTTSAdapter(TTSAdapter):
         try:
             # NeuTTS is installed via pip in the virtual environment
             from neuttsair.neutts import NeuTTSAir
+            import torch
+            
+            # Auto-detect best device: MPS (Mac GPU) > CUDA (NVIDIA) > CPU
+            if torch.backends.mps.is_available():
+                device = "mps"
+                print(f"🚀 Using Apple Metal (MPS) GPU acceleration")
+            elif torch.cuda.is_available():
+                device = "cuda"
+                print(f"🚀 Using NVIDIA CUDA GPU acceleration")
+            else:
+                device = "cpu"
+                print(f"⚠️ Using CPU (slower)")
             
             self.model = NeuTTSAir(
                 backbone_repo="neuphonic/neutts-air",
-                backbone_device="cpu",
+                backbone_device=device,
                 codec_repo="neuphonic/neucodec",
-                codec_device="cpu"
+                codec_device=device
             )
             
             return True
