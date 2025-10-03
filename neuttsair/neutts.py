@@ -7,7 +7,12 @@ import librosa
 import numpy as np
 import torch
 import re
-import perth
+try:
+    import perth
+    PERTH_AVAILABLE = True
+except ImportError:
+    PERTH_AVAILABLE = False
+    print("⚠️  Perth watermarking not available (optional feature)")
 from neucodec import NeuCodec, DistillNeuCodec
 from phonemizer.backend import EspeakBackend
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -46,8 +51,11 @@ class NeuTTSAir:
 
         self._load_codec(codec_repo, codec_device)
 
-        # Load watermarker
-        self.watermarker = perth.PerthImplicitWatermarker()
+        # Load watermarker (optional)
+        if PERTH_AVAILABLE:
+            self.watermarker = perth.PerthImplicitWatermarker()
+        else:
+            self.watermarker = None
 
     def _load_backbone(self, backbone_repo, backbone_device):
         print(f"Loading backbone from: {backbone_repo} on {backbone_device} ...")
