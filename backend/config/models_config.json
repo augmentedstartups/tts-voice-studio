@@ -88,6 +88,76 @@
           "language": "en-US"
         },
         {
+          "id": "bigbang_amy",
+          "name": "Amy (Big Bang)",
+          "description": "Enthusiastic female scientist voice",
+          "gender": "female",
+          "language": "en-US"
+        },
+        {
+          "id": "bigbang_sheldon",
+          "name": "Sheldon (Big Bang)",
+          "description": "Precise male scientist voice",
+          "gender": "male",
+          "language": "en-US"
+        },
+        {
+          "id": "broom_salesman",
+          "name": "Broom Salesman",
+          "description": "Energetic salesperson voice",
+          "gender": "male",
+          "language": "en-US"
+        },
+        {
+          "id": "fiftyshades_anna",
+          "name": "Anna (Fifty Shades)",
+          "description": "Soft and gentle female voice",
+          "gender": "female",
+          "language": "en-US"
+        },
+        {
+          "id": "mabaoguo",
+          "name": "Ma Baoguo",
+          "description": "Traditional Chinese male voice",
+          "gender": "male",
+          "language": "zh-CN"
+        },
+        {
+          "id": "shrek_donkey",
+          "name": "Donkey (Shrek)",
+          "description": "Funny and energetic character voice",
+          "gender": "male",
+          "language": "en-US"
+        },
+        {
+          "id": "shrek_donkey_es",
+          "name": "Donkey Spanish (Shrek)",
+          "description": "Spanish version of Donkey",
+          "gender": "male",
+          "language": "es-ES"
+        },
+        {
+          "id": "shrek_fiona",
+          "name": "Fiona (Shrek)",
+          "description": "Princess character voice",
+          "gender": "female",
+          "language": "en-US"
+        },
+        {
+          "id": "shrek_shrek",
+          "name": "Shrek",
+          "description": "Gruff ogre character voice",
+          "gender": "male",
+          "language": "en-US"
+        },
+        {
+          "id": "zh_man_sichuan",
+          "name": "Sichuan Man",
+          "description": "Sichuan dialect male voice",
+          "gender": "male",
+          "language": "zh-CN"
+        },
+        {
           "id": "auto",
           "name": "Smart Voice",
           "description": "AI selects appropriate voice based on text",
