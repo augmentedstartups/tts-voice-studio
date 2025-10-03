@@ -7,7 +7,7 @@ cd /Users/riteshkanjee/Documents/dev/tts-voice-studio
 ./setup.sh
 ```
 
-Wait ~5 minutes for dependencies to install.
+Wait ~10 minutes for dependencies to install.
 
 ---
 
@@ -21,6 +21,8 @@ lsof -ti:8000 | xargs kill -9 2>/dev/null || true
 
 **Backend will run on:** http://localhost:8000  
 **API Docs:** http://localhost:8000/docs
+
+✅ **NeuTTS Air now uses MPS (Apple GPU) for 3-5x faster generation!**
 
 ---
 
@@ -50,7 +52,7 @@ lsof -ti:8000 | xargs kill -9
 ## Available Models
 
 - **Higgs Audio V2**: 7 voices (Belinda, Chadwick, English Man, English Woman, Mabel, Vex, Smart Voice)
-- **NeuTTS Air**: 3 voices (Dave, Jo, Ritesh)
+- **NeuTTS Air**: 3 voices (Dave, Jo, Ritesh) **[Uses Apple GPU 🚀]**
 
 ---
 
@@ -78,4 +80,3 @@ rm -rf .venv
 ---
 
 **Full documentation**: `docs/` folder
-
