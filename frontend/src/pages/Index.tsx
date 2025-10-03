@@ -6,9 +6,14 @@ import { ModelSelector } from "@/components/ModelSelector";
 import { FileImport } from "@/components/FileImport";
 import { TextEditor } from "@/components/TextEditor";
 import { SettingsSidebar } from "@/components/SettingsSidebar";
-import { Sparkles, Download, Loader2 } from "lucide-react";
+import { Sparkles, Download, Loader2, Clock, ChevronDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { API_ENDPOINTS } from "@/config/api";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const Index = () => {
   const [text, setText] = useState("");
@@ -19,6 +24,8 @@ const Index = () => {
   const [volume, setVolume] = useState(100);
   const [isGenerating, setIsGenerating] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [generationTime, setGenerationTime] = useState<number | null>(null);
+  const [isApiGuideOpen, setIsApiGuideOpen] = useState(false);
   const { toast } = useToast();
 
   const handleGenerate = async () => {
@@ -42,6 +49,8 @@ const Index = () => {
 
     setIsGenerating(true);
     setAudioUrl(null);
+    setGenerationTime(null);
+    const startTime = performance.now();
 
     try {
       const response = await fetch(API_ENDPOINTS.generate, {
@@ -68,12 +77,15 @@ const Index = () => {
       }
 
       const data = await response.json();
+      const endTime = performance.now();
+      const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
       
       if (data.success && data.audioUrl) {
         setAudioUrl(data.audioUrl);
+        setGenerationTime(parseFloat(timeTaken));
         toast({
           title: "Generation Complete!",
-          description: `Successfully generated audio with ${voice} voice.`,
+          description: `Successfully generated audio with ${voice} voice in ${timeTaken}s.`,
         });
       }
     } catch (error) {
@@ -174,7 +186,15 @@ const Index = () => {
               {/* Audio Player */}
               {audioUrl && (
                 <div className="bg-card rounded-lg border border-border p-6">
-                  <h3 className="text-lg font-semibold mb-4">Generated Audio</h3>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-semibold">Generated Audio</h3>
+                    {generationTime && (
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Clock className="h-4 w-4" />
+                        <span>{generationTime}s</span>
+                      </div>
+                    )}
+                  </div>
                   <audio
                     controls
                     className="w-full"
@@ -185,41 +205,57 @@ const Index = () => {
                 </div>
               )}
 
-              {/* API Documentation Card */}
-              <div className="bg-card rounded-lg border border-border p-6 mt-8">
-                <h3 className="text-lg font-semibold mb-4">API Integration Guide</h3>
-                <div className="space-y-4 text-sm">
-                  <div>
-                    <h4 className="font-medium text-primary mb-2">Generate Voice</h4>
-                    <code className="block bg-muted p-3 rounded font-mono text-xs">
-                      POST /api/generate<br />
-                      Content-Type: application/json<br /><br />
-                      {`{
+              {/* API Documentation Card - Collapsible */}
+              <Collapsible
+                open={isApiGuideOpen}
+                onOpenChange={setIsApiGuideOpen}
+                className="bg-card rounded-lg border border-border mt-8"
+              >
+                <CollapsibleTrigger className="w-full p-6 flex items-center justify-between hover:bg-accent/50 transition-colors rounded-lg">
+                  <h3 className="text-lg font-semibold">API Integration Guide</h3>
+                  <ChevronDown 
+                    className={`h-5 w-5 transition-transform ${isApiGuideOpen ? 'rotate-180' : ''}`}
+                  />
+                </CollapsibleTrigger>
+                <CollapsibleContent className="px-6 pb-6">
+                  <div className="space-y-4 text-sm pt-2">
+                    <div>
+                      <h4 className="font-medium text-primary mb-2">Generate Voice</h4>
+                      <code className="block bg-muted p-3 rounded font-mono text-xs">
+                        POST /api/generate<br />
+                        Content-Type: application/json<br /><br />
+                        {`{
   "text": "Your text here",
-  "voice": "aria",
-  "model": "tts-1",
+  "voice": "belinda",
+  "model": "higgs-audio-v2",
   "settings": {
-    "speed": 1.0,
-    "pitch": 1.0,
-    "volume": 100
+    "temperature": 0.7,
+    "top_k": 50
   }
 }`}
-                    </code>
+                      </code>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-primary mb-2">List Available Voices</h4>
+                      <code className="block bg-muted p-3 rounded font-mono text-xs">
+                        GET /api/models/{'{model_id}'}/voices
+                      </code>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-primary mb-2">List Available Models</h4>
+                      <code className="block bg-muted p-3 rounded font-mono text-xs">
+                        GET /api/models
+                      </code>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-primary mb-2">Backend URL</h4>
+                      <code className="block bg-muted p-3 rounded font-mono text-xs">
+                        http://localhost:8000
+                      </code>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-medium text-primary mb-2">List Available Voices</h4>
-                    <code className="block bg-muted p-3 rounded font-mono text-xs">
-                      GET /api/voices
-                    </code>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-primary mb-2">List Available Models</h4>
-                    <code className="block bg-muted p-3 rounded font-mono text-xs">
-                      GET /api/models
-                    </code>
-                  </div>
-                </div>
-              </div>
+                </CollapsibleContent>
+              </Collapsible>
             </div>
           </main>
         </div>
