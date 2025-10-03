@@ -8,10 +8,8 @@ import asyncio
 
 from .base_adapter import TTSAdapter
 
-# Note: Higgs Audio uses models from HuggingFace, no local path needed
-# Voice prompts are in models/higgs-audio/voice_prompts/ but not currently used
-# The model downloads automatically from bosonai/higgs-audio-v2-generation-3B-base
-HIGGS_AUDIO_PATH = Path(__file__).parent.parent.parent / "models" / "higgs-audio"
+# Point to the old working higgs-audio repository
+HIGGS_AUDIO_PATH = Path("/Users/riteshkanjee/Documents/dev/neurotts/higgs-audio")
 
 class HiggsAudioAdapter(TTSAdapter):
     """Adapter for Higgs Audio V2 model"""

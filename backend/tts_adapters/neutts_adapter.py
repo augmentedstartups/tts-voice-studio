@@ -6,7 +6,11 @@ import torchaudio
 
 from .base_adapter import TTSAdapter
 
-NEUTTS_PATH = Path(__file__).parent.parent.parent / "models" / "neutts-air"
+# Add monorepo root to path for neuttsair import
+MONOREPO_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(MONOREPO_ROOT))
+
+NEUTTS_PATH = MONOREPO_ROOT / "models" / "neutts-air"
 
 class NeuTTSAdapter(TTSAdapter):
     """Adapter for NeuTTS Air model"""

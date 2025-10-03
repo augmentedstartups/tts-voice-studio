@@ -1,8 +1,12 @@
 # ⚡ Simple Start Guide
 
-## ✅ Backend is Already Running!
+## ✅ Backend is Running!
 
 Your backend is now running on: **http://localhost:8000**
+
+Both models initialized successfully:
+- ✅ Higgs Audio V2 (7 voices)
+- ✅ NeuTTS Air (3 voices)
 
 ---
 
