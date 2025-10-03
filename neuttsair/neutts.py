@@ -143,9 +143,13 @@ class NeuTTSAir:
 
         # Decode
         wav = self._decode(output_str)
-        watermarked_wav = self.watermarker.apply_watermark(wav, sample_rate=24_000)
-
-        return watermarked_wav
+        
+        # Apply watermark if available
+        if self.watermarker is not None:
+            watermarked_wav = self.watermarker.apply_watermark(wav, sample_rate=24_000)
+            return watermarked_wav
+        else:
+            return wav
 
     def encode_reference(self, ref_audio_path: str | Path):
         wav, _ = librosa.load(ref_audio_path, sr=16000, mono=True)
