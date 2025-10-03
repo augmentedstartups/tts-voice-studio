@@ -7,4 +7,11 @@ python-docx==1.1.2
 aiofiles==24.1.0
 torch
 torchaudio
-
+numpy
+phonemizer
+soundfile
+librosa
+transformers
+accelerate
+perth
+git+https://github.com/Neuphonic/NeuCodec.git
